@@ -1,0 +1,7 @@
+# Положи сюда фото и музыку, например:
+#   photo.jpg
+#   music.mp3
+#
+# Затем укажи путь в script.js:
+#   successImage: "assets/photo.jpg"
+#   backgroundMusic: "assets/music.mp3"

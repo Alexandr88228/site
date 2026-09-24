@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7c6d4" />
+  <meta name="description" content="Для самой особенной девушки — Ангелины" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>Для Гели ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
+  <div class="burst-layer" id="burstLayer" aria-hidden="true"></div>
+
+  <button class="music-btn" id="musicBtn" type="button" aria-label="Музыка" hidden>
+    <span class="music-icon" id="musicIcon">♪</span>
+  </button>
+
+  <main class="app">
+    <!-- INTRO -->
+    <section class="screen screen-intro is-active" id="screenIntro" aria-label="Приветствие">
+      <div class="screen-inner intro-inner">
+        <p class="eyebrow">для самой особенной девушки</p>
+        <h1 class="hero-name">Ангелина</span></h1>
+        <p class="hero-sub">или всё-таки Геля?</p>
+        <p class="intro-hint">я тут кое-что приготовил для тебя...</p>
+        <button class="btn btn-primary btn-open" id="openBtn" type="button">
+          открыть <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- QUESTION -->
+    <section class="screen screen-question" id="screenQuestion" aria-label="Вопрос" hidden>
+      <div class="screen-inner question-inner">
+        <h2 class="question-title" id="questionTitle">Гель, ты любишь меня?</span></h2>
+        <p class="persuade-msg" id="persuadeMsg" aria-live="polite"></p>
+
+        <div class="buttons-stage" id="buttonsStage">
+          <button class="btn btn-yes" id="yesBtn" type="button">да <span aria-hidden="true">❤️</span></button>
+          <button class="btn btn-no" id="noBtn" type="button">нет</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUCCESS -->
+    <section class="screen screen-success" id="screenSuccess" aria-label="Финал" hidden>
+      <div class="screen-inner success-inner">
+        <p class="success-eyebrow">так и знал <span aria-hidden="true"></span></p>
+        <div class="photo-frame" id="photoFrame">
+          <video
+            id="successVideo"
+            class="success-video"
+            playsinline
+            webkit-playsinline
+            loop
+            muted
+            preload="auto"
+            hidden
+          ></video>
+          <div class="photo-placeholder" id="photoPlaceholder">
+            <span class="placeholder-heart" aria-hidden="true">💕</span>
+            <span class="placeholder-text"></span>
+          </div>
+        </div>
+        <p class="love-line" id="loveLine">люблю тебя,писичнаясисечнаякоролева</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay" aria-hidden="true"></div>
+
+  <audio id="bgMusic" loop preload="none"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
