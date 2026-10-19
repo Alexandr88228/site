@@ -1,5 +1,5 @@
 /* ============================================
-   Love site for Angelina / Геля
+   Love site for Anna / Анечка
    Soft romantic · cute · elegant · dreamy
    Mobile-first
    ============================================ */
@@ -129,6 +129,11 @@ body {
   overflow: hidden;
 }
 
+body.is-success .floating-hearts,
+body.is-success .burst-layer {
+  z-index: 7;
+}
+
 .float-heart {
   position: absolute;
   bottom: -40px;
@@ -246,6 +251,10 @@ body {
   color: var(--text-soft);
   margin-bottom: 18px;
   animation: fadeRise 0.8s var(--ease) 0.1s both;
+}
+
+.intro-inner .eyebrow {
+  text-transform: none;
 }
 
 .hero-name {
@@ -472,6 +481,7 @@ body {
 .screen-success {
   position: relative;
   z-index: 6;
+  max-width: 960px;
 }
 
 .success-inner {
@@ -491,17 +501,266 @@ body {
 .photo-frame {
   position: relative;
   width: 100%;
-  max-width: 280px;
-  max-height: min(52vh, 420px);
-  margin: 0 auto 24px;
-  aspect-ratio: 9 / 16;
-  border-radius: 24px;
+  aspect-ratio: 1;
+  border-radius: 18px;
   overflow: hidden;
   background: linear-gradient(145deg, #fce4ec, #f5c6d4);
   box-shadow:
     0 16px 40px rgba(160, 70, 100, 0.22),
     inset 0 0 0 3px rgba(255, 255, 255, 0.65);
   animation: photoReveal 0.9s var(--ease) 0.35s both;
+}
+
+.main-photo-button {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+#photoFrame {
+  z-index: 1;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  aspect-ratio: 1;
+  border-radius: 22px;
+}
+
+.success-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.main-photo-button[hidden] {
+  display: none;
+}
+
+.photo-hearts {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.photo-heart {
+  position: absolute;
+  bottom: -32px;
+  font-size: clamp(16px, 3vw, 26px);
+  opacity: 0;
+  filter: drop-shadow(0 2px 3px rgba(112, 40, 69, 0.28));
+  animation: photoHeartFloat ease-out forwards;
+}
+
+.main-photo-heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  font-size: clamp(24px, 7vw, 38px);
+  filter: drop-shadow(0 3px 6px rgba(112, 40, 69, 0.45));
+  animation: mainHeartBeat 1.6s ease-in-out infinite;
+}
+
+@keyframes mainHeartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.14); }
+}
+
+@keyframes photoHeartFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.65) rotate(-10deg);
+  }
+  15% { opacity: 0.9; }
+  80% { opacity: 0.8; }
+  100% {
+    opacity: 0;
+    transform: translateY(var(--float-distance)) scale(1.15) rotate(12deg);
+  }
+}
+
+.photo-gallery {
+  display: grid;
+  width: min(100%, 760px);
+  aspect-ratio: 1;
+  margin: 20px auto 0;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  gap: clamp(3px, 0.8vw, 8px);
+  align-items: stretch;
+  justify-items: stretch;
+  overflow: visible;
+}
+
+.photo-gallery > .photo-frame {
+  grid-column: 2 / span 6;
+  grid-row: 2 / span 6;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  aspect-ratio: 1;
+  border-radius: clamp(14px, 2vw, 24px);
+}
+
+.photo-gallery > .gallery-photo {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  border-radius: clamp(5px, 1vw, 12px);
+  aspect-ratio: 1;
+}
+
+.gallery-title {
+  margin-top: 14px;
+  color: var(--burgundy);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.6rem, 6vw, 2rem);
+  font-weight: 600;
+}
+
+.gallery-hint {
+  margin-top: 4px;
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+
+.gallery-photo {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 14px;
+  padding: 0;
+  background: var(--pink-soft);
+  box-shadow: 0 6px 16px rgba(160, 70, 100, 0.15);
+  cursor: zoom-in;
+  opacity: 0;
+}
+
+.photo-gallery.is-revealing .gallery-photo {
+  animation: galleryPhotoReveal 1.35s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: var(--reveal-delay);
+}
+
+.gallery-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s var(--ease);
+}
+
+.gallery-photo:hover img {
+  transform: scale(1.06);
+}
+
+@keyframes galleryPhotoReveal {
+  from {
+    opacity: 0.08;
+    transform: translate3d(var(--fall-x), calc(-1 * var(--fall-distance)), 0) rotate(var(--fall-rotation)) scale(0.96);
+  }
+  78% {
+    opacity: 1;
+    transform: translate3d(0, 2px, 0) rotate(0) scale(1.01);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0) scale(1);
+  }
+}
+
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 56px 20px 20px;
+  border: 0;
+  background: transparent;
+  color: var(--burgundy);
+}
+
+.photo-lightbox[open] {
+  display: grid;
+  place-items: center;
+}
+
+.photo-lightbox::backdrop {
+  background: transparent;
+}
+
+.lightbox-image {
+  display: block;
+  max-width: 50vw;
+  max-height: 50vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: calc(12px + var(--safe-top));
+  right: calc(16px + var(--safe-right));
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(139, 58, 74, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 248, 250, 0.92);
+  color: var(--burgundy);
+  font: inherit;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .success-inner {
+    padding: 28px 14px 30px;
+  }
+
+  .photo-gallery {
+    width: 100%;
+    gap: 3px;
+    margin-top: 14px;
+  }
+
+  .photo-gallery > .photo-frame {
+    border-radius: 14px;
+  }
+
+  .gallery-photo {
+    border-width: 1px;
+    border-radius: 5px;
+  }
+
+  .gallery-title {
+    font-size: 1.55rem;
+  }
+
+  .gallery-hint {
+    font-size: 0.72rem;
+  }
+
+  .lightbox-image {
+    max-width: 50vw;
+    max-height: 50dvh;
+  }
 }
 
 @keyframes photoReveal {
@@ -548,8 +807,6 @@ body::before {
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
 }
 
-.success-video,
-.success-image,
 .photo-placeholder {
   width: 100%;
   height: 100%;
@@ -598,6 +855,38 @@ body::before {
   .screen {
     max-width: 480px;
   }
+
+  .screen.screen-success {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 480px) {
+  .success-inner {
+    padding: 28px 14px 30px;
+  }
+
+  .photo-gallery {
+    width: 100%;
+    gap: 3px;
+  }
+
+  .gallery-photo {
+    border-radius: 9px;
+  }
+
+  .gallery-title {
+    font-size: 1.55rem;
+  }
+
+  .gallery-hint {
+    font-size: 0.72rem;
+  }
+
+  .lightbox-image {
+    max-width: 50vw;
+    max-height: 50dvh;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -608,17 +897,6 @@ body::before {
     scroll-behavior: auto !important;
   }
 }
-.success-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.success-video[hidden] {
-  display: none;
-}
-
 .photo-placeholder {
   position: absolute;
   inset: 0;
@@ -628,6 +906,10 @@ body::before {
   justify-content: center;
   gap: 10px;
   padding: 24px;
+}
+
+.photo-placeholder[hidden] {
+  display: none !important;
 }
 
 .placeholder-heart {
@@ -705,6 +987,10 @@ body::before {
 
   .photo-frame {
     max-width: 320px;
+  }
+
+  .photo-gallery {
+    gap: 14px;
   }
 
   .blob {
