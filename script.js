@@ -7,7 +7,7 @@
 // Фоновая музыка — включается после ответа «да»
 const BACKGROUND_MUSIC = "assets/music.mp3";
 const PHOTO_CLICK_SOUND = "assets/click.wav";
-const PHOTO_COUNT = 25;
+const PHOTO_COUNT = 24;
 
 const CONFIG = {
   name: "Анна",
@@ -116,11 +116,10 @@ function setupSuccessPhotos() {
 
   const fragment = document.createDocumentFragment();
   const gallerySlots = [
-    [1, 1],
-    ...Array.from({ length: 6 }, (_, index) => [1, index + 2]),
-    ...Array.from({ length: 6 }, (_, index) => [index + 2, 8]),
-    ...Array.from({ length: 6 }, (_, index) => [8, 7 - index]),
-    ...Array.from({ length: 6 }, (_, index) => [7 - index, 1]),
+    ...Array.from({ length: 7 }, (_, index) => [1, index + 1]),
+    ...Array.from({ length: 5 }, (_, index) => [index + 2, 7]),
+    ...Array.from({ length: 7 }, (_, index) => [7, 7 - index]),
+    ...Array.from({ length: 5 }, (_, index) => [6 - index, 1]),
   ];
   const revealOrder = Array.from({ length: PHOTO_COUNT }, (_, index) => index);
   for (let index = revealOrder.length - 1; index > 0; index -= 1) {

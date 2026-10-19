@@ -593,8 +593,8 @@ body.is-success .burst-layer {
   width: min(100%, 760px);
   aspect-ratio: 1;
   margin: 20px auto 0;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  grid-template-rows: repeat(8, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-rows: repeat(7, minmax(0, 1fr));
   gap: clamp(3px, 0.8vw, 8px);
   align-items: stretch;
   justify-items: stretch;
@@ -602,8 +602,8 @@ body.is-success .burst-layer {
 }
 
 .photo-gallery > .photo-frame {
-  grid-column: 2 / span 6;
-  grid-row: 2 / span 6;
+  grid-column: 2 / span 5;
+  grid-row: 2 / span 5;
   z-index: 1;
   width: 100%;
   height: 100%;
